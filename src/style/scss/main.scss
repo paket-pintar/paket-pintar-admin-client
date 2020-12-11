@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap');
+
+$font-stack: 'Raleway', sans-serif;
+$color-primary: #f9e0ae;
+$color-secondary: #fc8621;
+
+$color-bg-nav: #E5E7EB;
+
+
+body{
+  font: $font-stack;
+}
+
+.bg-nav{
+  background-color: $color-bg-nav;
+}
+
+.main-container{
+
+}
+
+.text-h1{
+  font-size: x-large;
+  font-weight: 600;
+}
+.text-h2{
+  font-size: x-large;
+  font-weight: 400;
+}
+.text-h3{
+  font-size: large;
+  font-weight: 300;
+}
+
+.text-header{
+  font-size:xx-large;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.nav-active{
+  background-color:#fff;
+  border-radius: 7px;
+  padding: 8px 50rem 8px 8px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+.nav-inactive{
+  font-size:x-large;
+}
+
+.text-p {
+  font-size: medium;
+  font-style: italic;
+}
+
+.form-input{
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.btn-1{
+  padding: 10px 3rem;
+  border-radius:7px;
+  background-color: $color-primary;
+}
+
+.btn-large{
+  padding: 0.5rem 2rem;
+  border-radius: 7px;
+  margin-right: 10px;
+  background-color: $color-primary;
+}
+
+.camera-box{
+  background-color: blue;
+  width: 400px;
+  height:400px;
+}
+
+.nav-text{
+  font-size: large;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
