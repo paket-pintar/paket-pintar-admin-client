@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 
 export default function Navbar () {
   return (
-    <nav class="w-1/5 main-navbar bg-nav">
+    <nav class="w-60 main-navbar bg-nav">
     <div class="flex h-screen flex-col justify-between pl-8 py-16">
       <div>
         <div>
