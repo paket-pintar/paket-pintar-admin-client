@@ -35,13 +35,12 @@ export default function Home(){
           <Scan />
         </Route>
 
-        <Route path="/customer-packages">
+        <Route path="/customer-packages/:id">
           <CustomerPackages />
         </Route>
 
         <Route path="/">
           { localStorage.getItem('access_token')? <Dashboard /> : <Redirect to="/login" />}
-          {/* <Dashboard /> */}
         </Route>
       </Switch>
         

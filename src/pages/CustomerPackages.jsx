@@ -1,11 +1,26 @@
+import {useSelector} from 'react-redux'
+import {useParams} from 'react-router-dom'
+
 export default function CustomerPackages() {
+  const { id } = useParams()
+  const {users} = useSelector(state => state.user)
+  const {packages} = useSelector(state => state.packages)
+
+  const userFilter = () => {
+    return users.filter(el => el.id === +id)
+  }
+
+  const packageFilter = () => {
+    return packages.filter(el => el.User.id === +id)
+  }
+
   return(
     <div className="w-4/5 main-content rounded-tl-lg bg-white">
 
         <div className="px-8 pt-16 pb-2">
           <h1 className="text-header">Ambil Paket</h1>
         </div>
-
+    {JSON.stringify(userFilter())}
         <div className="flex flex-row w-4/5 justify-start items-center px-8">
           <div>
             <h1 className="text-h2">Nama : Nikolas Saputra</h1>
