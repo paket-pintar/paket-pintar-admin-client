@@ -9,7 +9,10 @@ export default function Home(){
 
     <div className="flex flex-row h-screen">
       
-      <Navbar />
+      <div>
+        <Navbar />
+
+      </div>
 
       <div className="w-4/5 main-content rounded-tl-lg bg-white">
       <Switch>
