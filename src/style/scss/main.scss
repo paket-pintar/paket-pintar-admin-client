@@ -40,8 +40,8 @@ body{
 
 .nav-active{
   background-color:#fff;
-  border-radius: 7px;
-  padding: 8px 50rem 8px 8px;
+  border-radius: 7px 0 0 7px;
+  padding: 8px 8rem 8px 8px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 .nav-inactive{
@@ -51,6 +51,11 @@ body{
 .text-p {
   font-size: medium;
   font-style: italic;
+}
+
+.error-text {
+  font-size: medium;
+  color: red;
 }
 
 .form-input{

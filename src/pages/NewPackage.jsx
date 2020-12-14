@@ -1,7 +1,19 @@
+import { useState, useEffect } from 'react'
 import { useHistory } from "react-router-dom"
 
 export default function NewPackage() {
+  const [filter, setFilter] = useState('')
   const history = useHistory()
+
+  function handleInputChange(e){
+    e.preventDefault()
+    setFilter(e.target.value)
+  }
+
+  function searchResidents(e) {
+    e.preventDefault()
+    console.log(filter)    
+  }
 
   function navigateTo(path) {
     history.push(path)
@@ -14,15 +26,17 @@ export default function NewPackage() {
           <h1 className="text-header">Add New Package</h1>
         </div>
 
-        <div className="flex flex-row w-4/5 mt-2">
-          <form className="w-full">
+        <div className="flex w-4/5 mt-2">
+          <form onSubmit={searchResidents}
+          className="w-full flex flex-row">
             <input
+              onChange={handleInputChange}
               className="form-input w-full"
               type="text"
               placeholder="Enter resident name"
             />
+          <button type="submit" className="ml-3 btn-1">Search</button>
           </form>
-          <button className="ml-3 btn-1">Search</button>
         </div>
 
         <div className="flex flex-col items-center w-4/5">
