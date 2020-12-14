@@ -33,7 +33,7 @@ export function setPackageLoading(value) {
   }
 }
 
-export function loginSuccess(loginState) {
+export function setLoginSuccess(loginState) {
   return {
     type: "SET_LOGIN_SUCCESS",
     payload: loginState,

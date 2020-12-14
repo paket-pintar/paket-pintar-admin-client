@@ -1,10 +1,14 @@
-import React from 'react'
-
+import React, {useEffect} from 'react'
+import { Redirect } from 'react-router-dom'
 import { Navbar } from '../components'
 import { Dashboard, History, NewPackage, Scan, CustomerPackages, NewPackageDesc } from './index'
 import { Switch, Route } from 'react-router-dom'
 
 export default function Home(){
+
+  useEffect(() => {
+  }, [])
+
   return(
 
     <div className="flex flex-row h-screen">
@@ -35,8 +39,9 @@ export default function Home(){
           <CustomerPackages />
         </Route>
 
-        <Route exact path="/">
-          <Dashboard />
+        <Route path="/">
+          { localStorage.getItem('access_token')? <Dashboard /> : <Redirect to="/login" />}
+          {/* <Dashboard /> */}
         </Route>
       </Switch>
         
