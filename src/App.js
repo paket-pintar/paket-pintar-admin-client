@@ -12,16 +12,18 @@ import {Login, Home} from './pages/'
 
 function App() {
 
-  const [notLoggedIn, setNotLoggedIn] = useState(true)
+  const [notLoggedIn, setNotLoggedIn] = useState(false)
+  const access_token = localStorage.getItem('access_token')
+  console.log(access_token, '<< access token')
+
   return (
     <Switch>
 
       <Route path="/login">
-        <Login />
+        { localStorage.getItem('access_token')? <Redirect to="/" /> : <Login />}
       </Route>
 
       <Route path="/">
-        {/* { notLoggedIn? <Redirect to="/login" />: <Dashboard />} */}
         <Home />
       </Route>
 

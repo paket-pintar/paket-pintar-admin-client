@@ -1,11 +1,11 @@
 import axios from "axios"
 import {
   setLoginErr,
-  loginSuccess,
+  setLoginSuccess,
   setPackageLoading,
   setPackages,
 } from "../store/actions/actions"
-const baseURL = "http://localhost:3000"
+import {baseURL} from '../config/config'
 
 export function userLogin(payload) {
   return (dispatch) => {
@@ -23,7 +23,7 @@ export function userLogin(payload) {
       },
     })
       .then(({ data }) => {
-        dispatch(loginSuccess(true))
+        dispatch(setLoginSuccess(true))
         dispatch(setLoginErr(""))
         const { access_token } = data
         localStorage.setItem("access_token", access_token)

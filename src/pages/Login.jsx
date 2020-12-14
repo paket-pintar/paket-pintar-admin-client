@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-import {useHistory} from 'react-router-dom'
+import { baseURL } from "../config/config"
+import { useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { setLoginErr } from "../store/actions/actions"
-import { userLogin } from "../helpers/serverInteraction"
+import {
+  setLoginErr,
+  setLoginSuccess,
+} from "../store/actions/actions"
+// import { userLogin } from "../helpers/serverInteraction"
 import {} from "react-router-dom"
 
 export default function Login() {
@@ -13,8 +17,7 @@ export default function Login() {
   const { loginErrMsg } = useSelector((state) => state.error)
   const [userInput, setUserInput] = useState({ email: "", password: "" })
 
-  useEffect(() => {
-  }, [])
+  useEffect(() => {}, [])
 
   function handleInputChange(e) {
     let key = e.target.name
@@ -23,14 +26,32 @@ export default function Login() {
     setUserInput({ ...userInput, [key]: value })
   }
 
+  function userLogin() {
+    console.log()
+    axios({
+      baseURL,
+      url: "/login",
+      method: "POST",
+      data: userInput,
+    })
+      .then(({ data }) => {
+        console.log(data, "<< data from userLogin")
+        dispatch(setLoginSuccess(true))
+        dispatch(setLoginErr(""))
+        const { access_token } = data
+        localStorage.setItem("access_token", access_token)
+        history.push("/")
+      })
+      .catch(({ response }) => {
+        dispatch(setLoginErr(response.data.msg))
+      })
+  }
+
   function handleLogin(e) {
     e.preventDefault()
-    console.log(userInput)
-    dispatch(userLogin(userInput))
-
-    if( loginSuccess ){
-        history.push('/')
-      }
+    // console.log(userInput)
+    userLogin()
+    // dispatch(userLogin(userInput))
   }
 
   return (
