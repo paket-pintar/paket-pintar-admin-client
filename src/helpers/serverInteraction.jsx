@@ -6,7 +6,7 @@ import {
   setPackages,
   setUsers,
 } from "../store/actions/actions"
-import {baseURL} from '../config/config'
+import { baseURL } from '../config/config'
 
 export function userLogin(payload) {
   return (dispatch) => {
@@ -97,17 +97,35 @@ export function fetchUsers() {
     const access_token = localStorage.getItem('access_token')
     axios({
       baseURL,
-      url:'/users',
+      url: '/users',
       method: 'get',
       headers: {
         access_token
       }
     })
+      .then(({ data }) => {
+        dispatch(setUsers(data))
+      })
+      .catch(({ response }) => {
+        console.log(response)
+      })
+  }
+}
+
+export async function sendNotification(payload) {
+  const access_token = localStorage.getItem('access_token')
+  // console.log(access_token, 'access_token');
+  axios({
+    baseURL,
+    url: "users/send-notification",
+    method: "POST",
+    data: payload,
+    headers: { access_token }
+  })
     .then(({ data }) => {
-      dispatch(setUsers(data))
+      console.log(data, "<< data notif")
     })
     .catch(({ response }) => {
-      console.log(response)
+      console.log(response);
     })
-  }
 }
