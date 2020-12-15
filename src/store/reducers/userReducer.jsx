@@ -7,6 +7,7 @@ const initState = {
 export default function userReducer(state = initState, action) {
   switch (action.type) {
     case "SET_USERS":
+      console.log(action.payload, '<<< isi action payload set user di reducer')
       return { ...state, users: action.payload }
     
     case 'SET_LOGIN_SUCCESS' : 

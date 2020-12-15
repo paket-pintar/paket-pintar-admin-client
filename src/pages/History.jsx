@@ -24,26 +24,26 @@ export default function History () {
   }
 
   return(
-    <div class="flex flex-col justify-start align-start h-screen px-8 py-16">
+    <div className="flex flex-col justify-start align-start h-screen px-8 py-16">
 
-          <div class="w-full flex flex-row">
-            <h1 class="text-header">History</h1>
+          <div className="w-full flex flex-row">
+            <h1 className="text-header">History</h1>
           </div>
-          <div class="flex mt-2 ">
+          <div className="flex mt-2 ">
 
-            <form class="w-full">
+            <form className="w-full">
               <input
               onChange={handleInputChange}
-              class="form-input w-4/5" type="text" placeholder="Filter by Name"/>
+              className="form-input w-4/5" type="text" placeholder="Filter by Name"/>
             </form>
 
           </div>
-          <div class="flex flex-col w-4/5 mt-4 h-screen overflow-y-scroll">
+          <div className="flex flex-col w-4/5 mt-4 h-screen overflow-y-scroll">
 
-            <table  class="w-full border text-center">
+            <table  className="w-full border text-center">
               <thead>
-                <tr class="bg-gray-700 text-white">
-                  <th class="py-4">Name</th>
+                <tr className="bg-gray-700 text-white">
+                  <th className="py-4">Name</th>
                   <th>Unit</th>
                   <th>Description</th>
                   <th>Claimed at</th>
@@ -56,7 +56,7 @@ export default function History () {
                     return (
                       <tr 
                       key={index}
-                      class={index%2===0?'bg-gray-100':'bg-white'}>
+                      className={index%2===0?'bg-gray-100':'bg-white'}>
                         <td>{item.User.name}</td>
                     <td>9A/C3</td>
                         <td>{item.description}</td>

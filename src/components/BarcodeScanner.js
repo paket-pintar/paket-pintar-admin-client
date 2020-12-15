@@ -5,9 +5,13 @@ import './BarcodeScanner.css';
 class BarcodeScanner extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      qrvalue: ''
+    }
     this.bDestroyed = false;
     this.scanner = null;
     this.elRef = React.createRef();
+    //this.history = useHistory()
   }
   async componentDidMount(){
     try{
@@ -19,11 +23,11 @@ class BarcodeScanner extends React.Component {
       this.scanner.setUIElement(this.elRef.current);
       this.scanner.onFrameRead = results => {
         if(results.length){
-          console.log(results);
+          this.setState({qrvalue: results[0].barcodeText})
         }
       };
       this.scanner.onUnduplicatedRead = (txt, result) => {
-        this.props.appendMessage(result.barcodeFormatString + ': ' + txt);
+        this.props.appendMessage(txt);
       };
       await this.scanner.open();
     }catch(ex){

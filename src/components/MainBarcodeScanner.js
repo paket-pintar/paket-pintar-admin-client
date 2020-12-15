@@ -9,12 +9,12 @@ class MainBarcodeScanner extends React.Component {
     this.refDivMessage = React.createRef();
     this.state = {
       messageKeyBase: 0,
-      messages: [],
+      message: '',
       bShowScanner: false
     };
   }
   componentDidUpdate(){
-    this.refDivMessage.current.scrollTop = this.refDivMessage.current.scrollHeight;
+    //this.refDivMessage.current.scrollTop = this.refDivMessage.current.scrollHeight;
   }
   componentWillUnmount(){
     if(this.reader){
@@ -24,12 +24,13 @@ class MainBarcodeScanner extends React.Component {
   render() {
     return (
       <div>
-        <h1>{ this.props.title }</h1>
+        
+        <h1></h1>
         { !this.state.bShowScanner ? (
           <div>
-            Choose image(s) to decode:
+            {/* Choose image(s) to decode:
             <input onChange={this.onIptChange} type="file" multiple accept="image/png,image/jpeg,image/bmp,image/gif" />
-            <br/><br/>
+            <br/><br/> */}
             <button className="btn-large" onClick={this.showScanner}>show scanner</button>
           </div>
         ) : (
@@ -39,23 +40,26 @@ class MainBarcodeScanner extends React.Component {
           </div>
         ) }
     
-        <div className="div-message" style={style.div_message} ref={this.refDivMessage}>
+        {/* <div className="div-message" style={style.div_message} ref={this.refDivMessage}>
           { this.state.messages.map((message, index) => 
             <p key={ this.state.messageKeyBase + index }>
               { message }
             </p>
           ) }
-        </div>
+        </div> */}
       </div>
     );
   }
   appendMessage = str => {
     this.setState(state=>{
-      state.messages.push(str);
-      if(state.messages.length > 500){
+      state.message = str;
+      /* if(state.messages.length > 500){
         ++state.messageKeyBase;
         state.messages.splice(0, 1);
-      }
+      } */
+      console.log(state, '<<< isi state')
+      state.bShowScanner = false
+      this.props.navigateTo(`/customer-packages/${state.message}`)
       return state;
     });
   }

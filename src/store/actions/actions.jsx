@@ -6,6 +6,7 @@ export function setLoginErr(message = "") {
 }
 
 export function setUsers(value) {
+  console.log(value, '<<< value di set user')
   return {
     type: 'SET_USERS',
     payload: value
@@ -13,6 +14,7 @@ export function setUsers(value) {
 }
 
 export function setPackages(value) {
+  console.log(value, '<<< isi set packages')
   return {
     type: 'SET_PACKAGES',
     payload: value
@@ -37,5 +39,12 @@ export function setLoginSuccess(loginState) {
   return {
     type: "SET_LOGIN_SUCCESS",
     payload: loginState,
+  }
+}
+
+export function setSubmitSuccess(value) {
+  return {
+    type: "SUBMIT_SUCCESS",
+    payload: value,
   }
 }

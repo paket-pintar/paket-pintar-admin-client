@@ -11,8 +11,8 @@ export default function Navbar() {
   }
 
   return (
-    <nav class="w-60 main-navbar bg-nav">
-      <div class="flex h-screen flex-col justify-between pl-8 py-16">
+    <nav className="w-60 main-navbar bg-nav">
+      <div className="flex h-screen flex-col justify-between pl-8 py-16">
         <div>
           <div>
             <NavLink
@@ -38,7 +38,7 @@ export default function Navbar() {
 
         <div>
 
-          <button onClick={userLogout} class="nav-inactive">
+          <button onClick={userLogout} className="nav-inactive">
             Logout
           </button>
         </div>
