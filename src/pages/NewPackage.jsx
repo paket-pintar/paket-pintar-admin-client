@@ -60,7 +60,8 @@ export default function NewPackage() {
         <div className="flex flex-col mt-10 heightCustom items-center w-4/5">
 
           <div className="w-full h-auto overflow-y-scroll">
-          {residentsFilter().map((user, index) => (
+          {
+          residentsFilter().map((user, index) => (
             <div
               key={index}
               className="flex flex-row p-3 justify-between items-center w-full"
