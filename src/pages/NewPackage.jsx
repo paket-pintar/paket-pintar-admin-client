@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from "react-router-dom"
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchUsers } from '../helpers/serverInteraction'
 
 export default function NewPackage() {
   const [filter, setFilter] = useState('')
+  const { users } = useSelector((state) => state.user)
   const history = useHistory()
+  const dispatch = useDispatch()
 
   function handleInputChange(e){
     e.preventDefault()
@@ -18,6 +22,12 @@ export default function NewPackage() {
   function navigateTo(path) {
     history.push(path)
   }
+
+  useEffect(() => {
+    dispatch(fetchUsers())
+  }, [])
+
+  console.log(users, '<<< ini users di redux')
 
   return (
     <div className="w-4/5 main-content">
@@ -38,64 +48,24 @@ export default function NewPackage() {
           <button type="submit" className="ml-3 btn-1">Search</button>
           </form>
         </div>
-
         <div className="flex flex-col items-center w-4/5">
-          {/* <!-- Loop Item 1 --> */}
-          <div className="flex flex-row p-3 justify-between items-center w-full">
-            <div className="bg-gray-100 p-2 w-full">
-              <h1>Nama : Nicholas Saputra</h1>
-              <h1>Unit : 10/C3</h1>
-            </div>
+          {users.map((user, index) => (
+            <div key={index} className="flex flex-row p-3 justify-between items-center w-full">
+              <div className="bg-gray-100 p-2 w-full">
+                <h1>Nama : {user.name}</h1>
+                <h1>Unit : {user.unit}</h1>
+              </div>
 
-            <div className="">
-              <button
-                onClick={() => navigateTo("/new/userId")}
-                className="btn-large"
-              >
-                Tambah Paket
-              </button>
+              <div className="">
+                <button
+                  onClick={() => navigateTo(`/new/${user.id}`)}
+                  className="btn-large"
+                >
+                  Tambah Paket
+                </button>
+              </div>
             </div>
-          </div>
-
-          {/* <!-- End loop item 1 --> */}
-
-          <div className="flex flex-row p-3 justify-between items-center w-full">
-            <div className="bg-gray-100 p-2 w-full">
-              <h1>Nama : Nicholas Saputra</h1>
-              <h1>Unit : 10/C3</h1>
-            </div>
-
-            <div className="">
-              <button
-                onClick={() => navigateTo("/new/userId")}
-                className="btn-large"
-              >
-                Tambah Paket
-              </button>
-            </div>
-          </div>
-
-          <div className="flex flex-row p-3 justify-between items-center w-full">
-            <div className="bg-gray-100 p-2 w-full">
-              <h1>Nama : Nicholas Saputra</h1>
-              <h1>Unit : 10/C3</h1>
-            </div>
-
-            <div className="">
-              <button className="btn-large">Tambah Paket</button>
-            </div>
-          </div>
-
-          <div className="flex flex-row p-3 justify-between items-center w-full">
-            <div className="bg-gray-100 p-2 w-full">
-              <h1>Nama : Nicholas Saputra</h1>
-              <h1>Unit : 10/C3</h1>
-            </div>
-
-            <div className="">
-              <button className="btn-large">Tambah Paket</button>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

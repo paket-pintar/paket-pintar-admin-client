@@ -1,11 +1,43 @@
-import {useHistory} from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
+import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { createPackage } from '../helpers/serverInteraction'
 
 export default function NewPackageDesc() {
-
+  const [description, setDescription] = useState('')
+  const [sender, setSender] = useState('')
   const history = useHistory()
+  const { users } = useSelector((state) => state.user)
+  const { userId } = useParams()
+  const dispatch = useDispatch()
 
   function navigateTo(path) {
     history.push(path)
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    const payload = {
+      description,
+      sender,
+      userId
+    }
+    createPackage(payload)
+      .then(({ data }) => {
+        console.log(data)
+        history.push('/')
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  function handleSender(e) {
+    setSender(e.target.value)
+  }
+
+  function handleDescription(e) {
+    setDescription(e.target.value)
   }
 
   return (
@@ -16,16 +48,19 @@ export default function NewPackageDesc() {
         </div>
 
         <div className="flex flex-row  justify-between w-2/3 mt-10">
-            <h2 className="text-h2">Nicholas Saputra</h2>
-            <h2 className="text-h2">Unit: 10/C2</h2>
+          {JSON.stringify()}
+            <h2 className="text-h2">{users[0].name}</h2>
+            <h2 className="text-h2">{users[0].unit}</h2>
           </div>
   
-          <div  className="flex flex-col w-2/3 mt-10">
-            <form className="w-full">
+          <div className="flex flex-col w-2/3 mt-10">
+            <form onSubmit={handleSubmit} className="w-full">
+              <label htmlFor="sender" className="text-h3">Sender</label>
+              <input onChange={handleSender} value={sender} type="text" id="sender" className="w-full mt-5 mb-5 p-4 border"/>
               <label className="text-h3">Deskripsi Paket</label>
-              <textarea rows="3" className="w-full mt-5 p-4 border"></textarea>
+              <textarea onChange={handleDescription} value={description} rows="3" className="w-full mt-5 p-4 border"></textarea>
+              <button type="submit" className="ml-3 btn-1 w-1/5 self-end">Submit</button>
             </form>
-            <button className="ml-3 btn-1 w-1/5 self-end">Submit</button>
           </div>
 
       </div>

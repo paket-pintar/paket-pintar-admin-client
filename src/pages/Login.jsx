@@ -30,7 +30,7 @@ export default function Login() {
     console.log()
     axios({
       baseURL,
-      url: "/login",
+      url: "/login-admin",
       method: "POST",
       data: userInput,
     })

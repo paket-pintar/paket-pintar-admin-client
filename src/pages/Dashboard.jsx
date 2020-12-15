@@ -8,7 +8,6 @@ export default function Dashboard() {
   const history = useHistory()
   const dispatch = useDispatch()
   const { packages } = useSelector((state) => state.packages)
-
   useEffect(() => {
     dispatch(fetchPackages())
   }, [])
@@ -16,7 +15,7 @@ export default function Dashboard() {
   const unclaimedPackages = () => {
     return packages.filter((el) => el.claimed === false)
   }
-
+  console.log(packages, '<<< ini packages di dashboard')
   function navigateTo(path) {
     history.push(path)
   }
@@ -40,13 +39,13 @@ export default function Dashboard() {
       </div>
 
       <div className="h-screen w-4/5 overflow-y-scroll">
-        {unclaimedPackages()?.map((item) => {
+        {unclaimedPackages()?.map((item, index) => {
           return (
-            <div className="h-auto m-5 p-5 flex flex-row justify-between items-center mb-5 bg-gray-300">
+            <div key={index} className="h-auto m-5 p-5 flex flex-row justify-between items-center mb-5 bg-gray-300">
               {/* {JSON.stringify(item)} */}
               <div>
                 <h1>Name : {item.User.name}</h1>
-                <h1>Unit : 10/13A</h1>
+                <h1>Unit : {item.User.unit}</h1>
                 <h1>Deskripsi : {item.description}</h1>
               </div>
 

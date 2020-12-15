@@ -4,6 +4,7 @@ import {
   setLoginSuccess,
   setPackageLoading,
   setPackages,
+  setUsers,
 } from "../store/actions/actions"
 import {baseURL} from '../config/config'
 
@@ -58,22 +59,52 @@ export function fetchPackages() {
   }
 }
 
-// export function fetchUsers() {
-//   return (dispatch) => {
-//     const access_token = localStorage.getItem('access_token')
-//     axios({
-//       baseURL,
-//       url:'/packages',
-//       method: 'get',
-//       headers: {
-//         access_token
-//       }
-//     })
-//     .then(({ data }) => {
-//       console.log(data)
-//     })
-//     .catch(({ response }) => {
-//       console.log(response)
-//     })
-//   }
-// }
+export function createPackage(payload) {
+  console.log('create package called')
+  const access_token = localStorage.getItem("access_token")
+  return axios({
+    baseURL,
+    url: "/packages",
+    method: "POST",
+    headers: {
+      access_token
+    },
+    data: {
+      sender: payload.sender,
+      description: payload.description,
+      UserId: payload.userId
+    }
+  })
+}
+
+export function claimPackage() {
+  const access_token = localStorage.getItem("access_token")
+  return axios({
+    baseURL,
+    url: "/packages",
+    method: "PATCH",
+    headers: {
+      access_token
+    }
+  })
+}
+
+export function fetchUsers() {
+  return (dispatch) => {
+    const access_token = localStorage.getItem('access_token')
+    axios({
+      baseURL,
+      url:'/users',
+      method: 'get',
+      headers: {
+        access_token
+      }
+    })
+    .then(({ data }) => {
+      dispatch(setUsers(data))
+    })
+    .catch(({ response }) => {
+      console.log(response)
+    })
+  }
+}

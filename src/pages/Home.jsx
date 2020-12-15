@@ -24,7 +24,7 @@ export default function Home(){
           <History />
         </Route>
 
-        <Route path="/new/userId">
+        <Route path="/new/:userId">
           <NewPackageDesc />
         </Route>
         <Route path="/new">
@@ -35,7 +35,7 @@ export default function Home(){
           <Scan />
         </Route>
 
-        <Route path="/customer-packages">
+        <Route path="/customer-packages/:UserId">
           <CustomerPackages />
         </Route>
 
