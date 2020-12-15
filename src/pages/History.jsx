@@ -19,15 +19,25 @@ export default function History () {
     return packages.filter(el => el.claimed === true)
   }
 
-  function handleInputChange(e){
+  function handleSelect(e) {
     setFilter(e.target.value)
+  }
+
+  function filterPackage() {
+    if (filter === 'all' || filter === '') {
+      return packages.filter(el => el)
+    } else if (filter === 'claimed') {
+      return packages.filter(el => el.claimed === true)
+    } else if (filter === 'unclaimed') {
+      return packages.filter(el => el.claimed === !true)
+    }
   }
 
   return(
     <div className="flex flex-col justify-start align-start h-screen px-8 py-16">
 
           <div className="w-full flex flex-row">
-            <h1 className="text-header">History</h1>
+            <h1 className="text-header">Packages</h1>
           </div>
           <div className="flex mt-2 ">
 {/* 
@@ -36,6 +46,12 @@ export default function History () {
               onChange={handleInputChange}
               className="form-input w-4/5" type="text" placeholder="Filter by Name"/>
             </form> */}
+          <select className="w-4/5" onChange={handleSelect}>
+            <option value="">Select Packages</option>
+            <option value="all">All</option>
+            <option value="claimed">Claimed</option>
+            <option value="unclaimed">Unclaimed</option>
+          </select>
 
           </div>
           <div className="flex flex-col w-4/5 mt-4 h-screen overflow-y-scroll">
@@ -46,13 +62,13 @@ export default function History () {
                   <th className="py-4">Name</th>
                   <th>Unit</th>
                   <th>Description</th>
-                  <th>Claimed at</th>
-
+                  <th>Received by</th>
+                  {filter === 'claimed' ? <th>Claimed at</th> : ''}
                 </tr>
               </thead>
               <tbody>
                 {
-                  claimedPackages()?.map((item, index) => {
+                  filterPackage()?.map((item, index) => {
                     return (
                       <tr 
                       key={index}
@@ -60,7 +76,9 @@ export default function History () {
                         <td>{item.User.name}</td>
                     <td>{item.User.unit}</td>
                         <td>{item.description}</td>
-                        <td>{getDateTime(item.updatedAt)}</td>
+                        <td>{item.receiver}</td>
+                        {filter === 'claimed' ? <td>{getDateTime(item.updatedAt)}</td> : ''}
+                        
                       </tr>
                     )
                   })
