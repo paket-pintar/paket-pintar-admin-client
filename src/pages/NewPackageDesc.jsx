@@ -33,6 +33,10 @@ export default function NewPackageDesc() {
       })
   }
 
+  function findUser() {
+    return users.find(el => el.id === +userId)
+  }
+
   function handleSender(e) {
     setSender(e.target.value)
   }
@@ -49,19 +53,18 @@ export default function NewPackageDesc() {
         </div>
 
         <div className="flex flex-row  justify-between w-2/3 mt-10">
-          {JSON.stringify()}
-          <h2 className="text-h2">{users[0].name}</h2>
-          <h2 className="text-h2">{users[0].unit}</h2>
+          <h2 className="text-h2">{findUser().name}</h2>
+          <h2 className="text-h2">{findUser().unit}</h2>
         </div>
-
+  
         <div className="flex flex-col w-2/3 mt-10">
           <form onSubmit={handleSubmit} className="w-full">
             <label htmlFor="sender" className="text-h3">Sender</label>
-            <input onChange={handleSender} value={sender} type="text" id="sender" className="w-full mt-5 mb-5 p-4 border" />
+            <input onChange={handleSender} value={sender} type="text" id="sender" className="w-full mt-5 mb-5 p-4 border"/>
             <label className="text-h3">Deskripsi Paket</label>
             <textarea onChange={handleDescription} value={description} rows="3" className="w-full mt-5 p-4 border"></textarea>
             <button type="submit" className="ml-3 btn-1 w-1/5 self-end">Submit</button>
-          </form>
+           </form>
         </div>
 
       </div>

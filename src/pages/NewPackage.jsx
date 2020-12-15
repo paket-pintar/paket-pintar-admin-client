@@ -1,22 +1,30 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchUsers } from '../helpers/serverInteraction'
+import { useSelector, useDispatch } from "react-redux"
+import { fetchUsers } from "../helpers/serverInteraction"
 
 export default function NewPackage() {
-  const [filter, setFilter] = useState('')
+  const [filter, setFilter] = useState("")
+  const [input, setInput] = useState("")
   const { users } = useSelector((state) => state.user)
   const history = useHistory()
   const dispatch = useDispatch()
 
-  function handleInputChange(e){
+  function handleInputChange(e) {
     e.preventDefault()
-    setFilter(e.target.value)
+    setInput(e.target.value)
+    // setFilter(e.target.value)
   }
 
   function searchResidents(e) {
     e.preventDefault()
-    console.log(filter)    
+    setFilter(input)
+  }
+
+  function residentsFilter() {
+    return users.filter((user) =>
+      user.name.toLowerCase().includes(filter.toLowerCase())
+    )
   }
 
   function navigateTo(path) {
@@ -27,33 +35,46 @@ export default function NewPackage() {
     dispatch(fetchUsers())
   }, [])
 
-  console.log(users, '<<< ini users di redux')
+  console.log(users, "<<< ini users di redux")
 
   return (
     <div className="w-4/5 main-content">
       <div className="flex flex-col justify-start align-start h-screen px-8 py-16">
         <div className="w-full flex flex-row">
-          <h1 className="text-header">Add New Package</h1>
+          <h1 className="text-header">Find Residents</h1>
         </div>
 
         <div className="flex w-4/5 mt-2">
-          <form onSubmit={searchResidents}
-          className="w-full flex flex-row">
+          <form onSubmit={searchResidents} className="w-full flex flex-row">
             <input
               onChange={handleInputChange}
               className="form-input w-full"
               type="text"
               placeholder="Enter resident name"
             />
-          <button type="submit" className="ml-3 btn-1">Search</button>
+            <button type="submit" className="ml-3 btn-1">
+              Search
+            </button>
           </form>
         </div>
-        <div className="flex flex-col items-center w-4/5">
-          {users.map((user, index) => (
-            <div key={index} className="flex flex-row p-3 justify-between items-center w-full">
-              <div className="bg-gray-100 p-2 w-full">
-                <h1>Nama : {user.name}</h1>
-                <h1>Unit : {user.unit}</h1>
+        <div className="flex flex-col mt-10 heightCustom items-center w-4/5">
+
+          <div className="w-full h-auto overflow-y-scroll">
+          {
+          residentsFilter().map((user, index) => (
+            <div
+              key={index}
+              className="flex flex-row p-3 justify-between items-center w-full"
+            >
+              <div className="flex flex-row justify-between mx-10 items-center p-2 w-full">
+                <div>
+                  <h1 className="text-h2">{user.name}</h1>
+
+                </div>
+                <div className="ml-20">
+                <h1 className="text-h2-alt">{user.unit}</h1>
+
+                </div>
               </div>
 
               <div className="">
@@ -66,6 +87,12 @@ export default function NewPackage() {
               </div>
             </div>
           ))}
+
+
+
+          </div>
+
+
         </div>
       </div>
     </div>

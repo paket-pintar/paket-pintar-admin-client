@@ -77,7 +77,7 @@ export function createPackage(payload) {
   })
 }
 
-export function claimPackage() {
+export function claimPackage(UserId) {
   const access_token = localStorage.getItem("access_token")
   return axios({
     baseURL,
@@ -85,6 +85,9 @@ export function claimPackage() {
     method: "PATCH",
     headers: {
       access_token
+    },
+    data: {
+      UserId
     }
   })
 }

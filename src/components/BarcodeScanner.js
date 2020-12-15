@@ -53,7 +53,7 @@ class BarcodeScanner extends React.Component {
         <video className="dbrScanner-video" playsInline={true}></video>
         <canvas className="dbrScanner-cvs-drawarea"></canvas>
         <div className="dbrScanner-cvs-scanarea">
-          <div className="dbrScanner-scanlight" style={{display:"none"}}></div>
+          {/* <div className="dbrScanner-scanlight" style={{display:"none"}}></div> */}
         </div>
         <select className="dbrScanner-sel-camera"></select>
         <select className="dbrScanner-sel-resolution"></select>
