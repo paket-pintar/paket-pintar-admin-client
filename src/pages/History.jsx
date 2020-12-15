@@ -58,7 +58,7 @@ export default function History () {
                       key={index}
                       className={index%2===0?'bg-gray-100':'bg-white'}>
                         <td>{item.User.name}</td>
-                    <td>9A/C3</td>
+                    <td>{item.User.unit}</td>
                         <td>{item.description}</td>
                         <td>{getDateTime(item.updatedAt)}</td>
                       </tr>
