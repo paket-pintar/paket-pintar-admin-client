@@ -16,13 +16,12 @@ export default function Scan() {
 
       <div className="flex flex-col justify-start items-center h-screen px-8 py-16">
         <div>
-          <h1 className="text-header">Scan Customer's QR Code</h1>
+          <h1 className="text-header">Scan Resident's QR Code</h1>
           {/* <div className="camera-box mt-5">
           </div> */}
           <MainBarcodeScanner navigateTo={navigateTo}/>
-
         </div>
-        <button className="btn-1 mt-2" onClick={() => navigateTo('/customer-packages')}>Berhasil Scan</button>
+        <button className="btn-1 mt-2" onClick={() => navigateTo('/customer-packages/2')}>Berhasil Scan</button>
       </div>
     
   </div>
