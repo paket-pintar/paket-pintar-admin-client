@@ -10,7 +10,7 @@ class MainBarcodeScanner extends React.Component {
     this.state = {
       messageKeyBase: 0,
       message: '',
-      bShowScanner: false
+      bShowScanner: true
     };
   }
   componentDidUpdate(){
@@ -25,7 +25,6 @@ class MainBarcodeScanner extends React.Component {
     return (
       <div>
         
-        <h1></h1>
         { !this.state.bShowScanner ? (
           <div>
             {/* Choose image(s) to decode:
@@ -35,7 +34,7 @@ class MainBarcodeScanner extends React.Component {
           </div>
         ) : (
           <div>
-            <button className="btn-large" onClick={this.hideScanner}>hide scanner</button>
+            {/* <button className="btn-large" onClick={this.hideScanner}>hide scanner</button> */}
             <BarcodeScanner appendMessage={this.appendMessage}></BarcodeScanner>
           </div>
         ) }

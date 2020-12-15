@@ -17,6 +17,11 @@ body {
   font-weight: 400;
 }
 
+.text-h2-alt {
+  font-size: x-large;
+  font-weight: 300;
+}
+
 .text-h3 {
   font-size: large;
   font-weight: 300;
@@ -54,6 +59,10 @@ body {
   border-radius: 8px;
   padding: 10px;
   margin: 5px;
+}
+
+.heightCustom {
+  max-height: 600px;
 }
 
 .btn-1 {

@@ -3,10 +3,15 @@ import { Redirect } from 'react-router-dom'
 import { Navbar } from '../components'
 import { Dashboard, History, NewPackage, Scan, CustomerPackages, NewPackageDesc } from './index'
 import { Switch, Route } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export default function Home(){
+  const { packages } = useSelector(state => state.packages)
+  const { users } = useSelector(state => state.user)
 
   useEffect(() => {
+    console.log(users, '<<< users')
+    console.log(packages)
   }, [])
 
   return(

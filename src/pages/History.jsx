@@ -30,12 +30,12 @@ export default function History () {
             <h1 className="text-header">History</h1>
           </div>
           <div className="flex mt-2 ">
-
+{/* 
             <form className="w-full">
               <input
               onChange={handleInputChange}
               className="form-input w-4/5" type="text" placeholder="Filter by Name"/>
-            </form>
+            </form> */}
 
           </div>
           <div className="flex flex-col w-4/5 mt-4 h-screen overflow-y-scroll">
