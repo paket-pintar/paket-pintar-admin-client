@@ -72,7 +72,8 @@ export function createPackage(payload) {
     data: {
       sender: payload.sender,
       description: payload.description,
-      UserId: payload.userId
+      UserId: payload.userId,
+      receiver: payload.receiver
     }
   })
 }

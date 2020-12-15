@@ -6,6 +6,7 @@ import { createPackage, sendNotification } from '../helpers/serverInteraction'
 export default function NewPackageDesc() {
   const [description, setDescription] = useState('')
   const [sender, setSender] = useState('')
+  const [receiver, setReceiver] = useState('')
   const history = useHistory()
   const { users } = useSelector((state) => state.user)
   const { userId } = useParams()
@@ -20,7 +21,8 @@ export default function NewPackageDesc() {
     const payload = {
       description,
       sender,
-      userId
+      userId,
+      receiver
     }
     sendNotification(payload)
     createPackage(payload)
@@ -39,6 +41,10 @@ export default function NewPackageDesc() {
 
   function handleSender(e) {
     setSender(e.target.value)
+  }
+
+  function handleReceiver(e) {
+    setReceiver(e.target.value)
   }
 
   function handleDescription(e) {
@@ -61,6 +67,8 @@ export default function NewPackageDesc() {
           <form onSubmit={handleSubmit} className="w-full">
             <label htmlFor="sender" className="text-h3">Sender</label>
             <input onChange={handleSender} value={sender} type="text" id="sender" className="w-full mt-5 mb-5 p-4 border"/>
+            <label htmlFor="receiver" className="text-h3">Receiver</label>
+            <input onChange={handleReceiver} value={receiver} type="text" id="receiver" className="w-full mt-5 mb-5 p-4 border"/>
             <label className="text-h3">Deskripsi Paket</label>
             <textarea onChange={handleDescription} value={description} rows="3" className="w-full mt-5 p-4 border"></textarea>
             <button type="submit" className="ml-3 btn-1 w-1/5 self-end">Submit</button>

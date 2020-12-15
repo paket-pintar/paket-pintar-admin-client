@@ -71,7 +71,8 @@ export default function CustomerPackages() {
               <div>
                 <h1>Name : {userPackage.User.name}</h1>
                 <h1>Unit : {userPackage.User.unit}</h1>
-                <h1>Deskripsi : {userPackage.description}</h1>
+                <h1>Description : {userPackage.description}</h1>
+                <h1>Received by : {userPackage.receiver}</h1>
               </div>
               <div className="flex flex-col items-center">
                 <h1>Incoming Date</h1>
