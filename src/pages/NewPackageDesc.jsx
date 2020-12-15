@@ -1,7 +1,7 @@
 import { useHistory, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { createPackage } from '../helpers/serverInteraction'
+import { createPackage, sendNotification } from '../helpers/serverInteraction'
 
 export default function NewPackageDesc() {
   const [description, setDescription] = useState('')
@@ -22,6 +22,7 @@ export default function NewPackageDesc() {
       sender,
       userId
     }
+    sendNotification(payload)
     createPackage(payload)
       .then(({ data }) => {
         console.log(data)
@@ -49,19 +50,19 @@ export default function NewPackageDesc() {
 
         <div className="flex flex-row  justify-between w-2/3 mt-10">
           {JSON.stringify()}
-            <h2 className="text-h2">{users[0].name}</h2>
-            <h2 className="text-h2">{users[0].unit}</h2>
-          </div>
-  
-          <div className="flex flex-col w-2/3 mt-10">
-            <form onSubmit={handleSubmit} className="w-full">
-              <label htmlFor="sender" className="text-h3">Sender</label>
-              <input onChange={handleSender} value={sender} type="text" id="sender" className="w-full mt-5 mb-5 p-4 border"/>
-              <label className="text-h3">Deskripsi Paket</label>
-              <textarea onChange={handleDescription} value={description} rows="3" className="w-full mt-5 p-4 border"></textarea>
-              <button type="submit" className="ml-3 btn-1 w-1/5 self-end">Submit</button>
-            </form>
-          </div>
+          <h2 className="text-h2">{users[0].name}</h2>
+          <h2 className="text-h2">{users[0].unit}</h2>
+        </div>
+
+        <div className="flex flex-col w-2/3 mt-10">
+          <form onSubmit={handleSubmit} className="w-full">
+            <label htmlFor="sender" className="text-h3">Sender</label>
+            <input onChange={handleSender} value={sender} type="text" id="sender" className="w-full mt-5 mb-5 p-4 border" />
+            <label className="text-h3">Deskripsi Paket</label>
+            <textarea onChange={handleDescription} value={description} rows="3" className="w-full mt-5 p-4 border"></textarea>
+            <button type="submit" className="ml-3 btn-1 w-1/5 self-end">Submit</button>
+          </form>
+        </div>
 
       </div>
     </div>
