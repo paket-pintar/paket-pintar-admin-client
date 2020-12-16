@@ -18,7 +18,7 @@ function App() {
     <Switch>
 
       <Route path="/login">
-        { access_token? <Redirect to="/" /> : <Login />}
+      <Login />
       </Route>
 
       <Route path="/">

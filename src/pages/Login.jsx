@@ -7,6 +7,7 @@ import {
   setLoginErr,
   setLoginSuccess,
 } from "../store/actions/actions"
+import logo from '../assets/logo.png'
 // import { userLogin } from "../helpers/serverInteraction"
 import {} from "react-router-dom"
 
@@ -57,12 +58,13 @@ export default function Login() {
   return (
     <div className="main-container p-20 flex justify-center">
       <div className="flex flex-col w-1/2 border p-10 rounded shadow-md">
-        <div>
-          <h1 className="bg-green-100 p-20 text-center">Paket Pintar Image</h1>
+        <div className="flex justify-center">
+
+           <img className="login-logo" src={logo} alt="Better Letter Logos"/>
         </div>
 
         <div>
-          <h1 className="text-center text-header p-10">Admin Login</h1>
+          <h1 className="text-center text-header p-10">Better Letter Admin Login</h1>
         </div>
         <div className="w-full">
           <form onSubmit={handleLogin} className="flex flex-col">
@@ -83,9 +85,9 @@ export default function Login() {
 
             {loginErrMsg ? <p className="error-text">{loginErrMsg}</p> : ""}
             <input
-              className="btn mt-5 py-3 rounded"
+              className="btn-login mt-5 py-3 rounded"
               type="submit"
-              value="Submit"
+              value="Login"
             />
           </form>
         </div>

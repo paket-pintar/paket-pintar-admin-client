@@ -1,8 +1,9 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
-import { getDateTime } from "../helpers/dateConvert"
+import { getDateTime, getMomentDate } from "../helpers/dateConvert"
 import { claimPackage } from "../helpers/serverInteraction"
+import btnOut from "../assets/btn-out.png"
 
 export default function CustomerPackages() {
   const { UserId } = useParams()
@@ -24,11 +25,10 @@ export default function CustomerPackages() {
   }
 
   function filterUser() {
-    if(users){
-      return users.find( user => user.id === +UserId)
-
+    if (users) {
+      return users.find((user) => user.id === +UserId)
     }
-    return { name: 'customer', unit: 'unit'}
+    return { name: "customer", unit: "unit" }
   }
 
   function filterPackage() {
@@ -37,53 +37,64 @@ export default function CustomerPackages() {
     )
   }
 
-  return (
-    <div className="w-4/5 main-content rounded-tl-lg bg-white">
-      <div className="px-8 pt-16 pb-2">
-        <h1 className="text-header">Ambil Paket</h1>
-      </div>
-      <div className="flex flex-row w-4/5 justify-start items-center px-8">
-        <div>
-          <h1 className="text-h2">Nama : {filterUser().name}</h1>
-          <h1 className="text-h2">Unit : {filterUser().unit}</h1>
+  if (packages && filterPackage().length === 0) {
+    return (
+      <div className="w main-content px-12 pt-40 bg-white">
+        <div className="pb-10">
+          <h1 className="text-header">
+            No New Packages for{" "}
+            <span>
+              {filterUser().name}, {filterUser().unit}
+            </span>
+          </h1>
         </div>
-        {
-          packages && filterPackage().length !== 0?(
-            <button onClick={handleClaimPackage} className="btn-1 ml-20">
-            Ambil Semua
-            </button>
-          ): ''
-        }
       </div>
-      
-      <div className="flex flex-col justify-start mt-5 px-8">
-        { packages &&
-          filterPackage().length === 0 ?(
-            <h1 className="text-h2 mt-5">No New Package</h1>
-            ):(
-            <div className="w-full heightCustom overflow-y-scroll">
-            {/* <!-- Loop Item 1 --> */}
-            {filterPackage().map((userPackage, index) => (
-              <div
-                key={index}
-                className="h-auto p-5 flex flex-row justify-between items-center mb-5 bg-gray-300"
-              >
-                <div>
-                  <h1>Name : {userPackage.User.name}</h1>
-                  <h1>Unit : {userPackage.User.unit}</h1>
-                  <h1>Description : {userPackage.description}</h1>
-                  <h1>Received by : {userPackage.receiver}</h1>
+    )
+  }
+
+  return (
+    <div className="w main-content px-12 pt-16 bg-white">
+      <div className="pb-10">
+        <h1 className="text-header">
+          Get Packages for{" "}
+          <span>
+            {filterUser().name}, {filterUser().unit}
+          </span>
+        </h1>
+      </div>
+
+      <div className="flex flex-row ">
+        <div className="">
+          <button
+            onClick={handleClaimPackage}
+            className="btn-large-action transform  transition hover:scale-105 flex flex-col items-center"
+          >
+            <img src={btnOut} alt="New Package" className="btn-image" />
+            <p className="btn-text mt-2">Get All Packages</p>
+          </button>
+        </div>
+
+        <div className="packages-container ml-5">
+          {packages &&
+            filterPackage().map((userPackage, index) => (
+              <div key={index} className="package-card mb-2">
+                <div className="flex justify-between flex-row items-center">
+                  <h1 className="package-card-title">{userPackage.sender}</h1>
+                  <p className="package-card-moment">
+                    {getMomentDate(userPackage.createdAt)}
+                  </p>
                 </div>
-                <div className="flex flex-col items-center">
-                  <h1>Incoming Date</h1>
-                  <h1>{getDateTime(userPackage.createdAt)}</h1>
-                </div>
+                <p className="package-card-description">
+                  {userPackage.description}
+                </p>
+                <p className="package-card-receivedBy">
+                  Received by : {userPackage.receiver}
+                </p>
               </div>
             ))}
-            </div>
-          )
-        }
+        </div>
       </div>
+    
     </div>
   )
 }

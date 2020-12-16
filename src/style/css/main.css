@@ -1,10 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 body {
-  font: "Raleway", sans-serif;
+  font: "Roboto", sans-serif;
 }
 
 .bg-nav {
-  background-image: linear-gradient(#eff8ff, #c9cbff);
+  background-color: #fff;
+}
+
+.main-content {
+  border-radius: 50px 0 0 50px;
+  background-color: #ededed;
 }
 
 .text-h1 {
@@ -22,6 +27,12 @@ body {
   font-weight: 300;
 }
 
+.text-sub-header {
+  font-size: x-large;
+  font-weight: 400;
+  color: #5e5e5e;
+}
+
 .text-h3 {
   font-size: large;
   font-weight: 300;
@@ -34,9 +45,9 @@ body {
 }
 
 .nav-active {
-  background-color: #fff;
-  border-radius: 7px 0 0 7px;
-  padding: 8px 8rem 8px 8px;
+  background-color: #ededed;
+  border-radius: 5px 0 0 5px;
+  padding: 12px 8rem 12px 20px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -45,8 +56,16 @@ body {
   font-size: x-large;
 }
 
+.login-logo {
+  width: 80px;
+}
+
 .navbar-icons {
   width: 20px;
+}
+
+.navbar-logo {
+  width: 50px;
 }
 
 .text-p {
@@ -70,10 +89,21 @@ body {
   max-height: 600px;
 }
 
+.package-filter {
+  padding-left: 10px;
+  font-size: 16px;
+}
+
 .btn-1 {
   padding: 10px 3rem;
   border-radius: 7px;
   background-color: #f9e0ae;
+}
+
+.btn-login {
+  background-color: #3648d3;
+  color: white;
+  font-size: x-large;
 }
 
 .btn-large {
@@ -81,6 +111,34 @@ body {
   border-radius: 7px;
   margin-right: 10px;
   background-color: #f9e0ae;
+}
+
+.btn-large-action {
+  padding: 1rem 4rem;
+  border-radius: 7px;
+  margin-right: 10px;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-plus {
+  padding: 2px 10px;
+  border-radius: 7px;
+  background-color: #46CC4C;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-plus-2 {
+  padding: 10px 10px;
+  border-radius: 7px;
+  background-color: #46CC4C;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-text {
+  font-size: 16px;
 }
 
 .camera-box {
@@ -93,6 +151,52 @@ body {
   font-size: large;
   font-weight: 500;
   margin-bottom: 10px;
+}
+
+.summary-box {
+  background-color: #3648d3;
+  max-width: 700px;
+  max-height: 150px;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.summary-box-text-header {
+  color: white;
+  font-size: 50px;
+}
+
+.summary-box-text-slug {
+  color: #d3d3d3;
+  font-size: 14px;
+}
+
+.package-card {
+  width: 500px;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background-color: #3648d3;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.package-card-title {
+  font-size: x-large;
+  color: #ffb531;
+}
+
+.package-card-description {
+  color: white;
+  font-size: medium;
+}
+
+.package-card-receivedBy {
+  color: #889DE2;
+  font-size: small;
+}
+
+.package-card-moment {
+  color: #889DE2;
 }
 
 /*# sourceMappingURL=main.css.map */

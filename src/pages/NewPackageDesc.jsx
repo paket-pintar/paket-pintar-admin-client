@@ -50,7 +50,7 @@ export default function NewPackageDesc() {
 
   return (
     <div className="w-4/5 main-content">
-      <div className="flex flex-col justify-start align-start h-screen px-8 py-16">
+      <div className="flex flex-col justify-start align-start h-screen px-12 py-16">
         <div className="w-full flex flex-row">
           <h1 className="text-header">Add New Package</h1>
         </div>
@@ -61,7 +61,7 @@ export default function NewPackageDesc() {
         </div>
   
         <div className="flex flex-col w-2/3 mt-10">
-          <form onSubmit={handleSubmit} className="w-full">
+          <form onSubmit={handleSubmit} className="w-full flex flex-col">
             {error ? <p style={{color: 'red'}}>{error}</p> : ''}
             <label htmlFor="sender" className="text-h3">Sender</label>
             <input onChange={handleSender} value={sender} type="text" id="sender" className="w-full mt-5 mb-5 p-4 border"/>
@@ -69,7 +69,7 @@ export default function NewPackageDesc() {
             <input onChange={handleReceiver} value={receiver} type="text" id="receiver" className="w-full mt-5 mb-5 p-4 border"/>
             <label className="text-h3">Deskripsi Paket</label>
             <textarea onChange={handleDescription} value={description} rows="3" className="w-full mt-5 p-4 border"></textarea>
-            <button type="submit" className="ml-3 btn-1 w-1/5 self-end">Submit</button>
+            <button type="submit" className="mt-4 btn-1 w-1/5 self-end  btn-plus-2">Submit</button>
            </form>
         </div>
 
