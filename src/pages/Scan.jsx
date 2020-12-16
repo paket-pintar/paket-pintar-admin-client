@@ -14,9 +14,9 @@ export default function Scan() {
     history.push(path)
   }
 
-  useEffect(() => {
+  /* useEffect(() => {
     dispatch(fetchUsers())
-  }, [])
+  }, []) */
 
   return(
     <div className="w-4/5 main-content rounded-tl-lg bg-white">
