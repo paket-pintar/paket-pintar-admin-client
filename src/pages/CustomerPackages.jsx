@@ -49,47 +49,40 @@ export default function CustomerPackages() {
         </div>
         {
           packages && filterPackage().length !== 0?(
-        <button onClick={handleClaimPackage} className="btn-1 ml-20">
-          Ambil Semua
-        </button>
-
+            <button onClick={handleClaimPackage} className="btn-1 ml-20">
+            Ambil Semua
+            </button>
           ): ''
         }
       </div>
       
-
       <div className="flex flex-col justify-start mt-5 px-8">
-
-        
-      { packages &&
-        filterPackage().length === 0 ?(
-          <h1 className="text-h2 mt-5">No New Package</h1>
-          ):(
-        <div className="w-full heightCustom overflow-y-scroll">
-          {/* <!-- Loop Item 1 --> */}
-          {filterPackage().map((userPackage, index) => (
-            <div
-              key={index}
-              className="h-auto p-5 flex flex-row justify-between items-center mb-5 bg-gray-300"
-            >
-              <div>
-                <h1>Name : {userPackage.User.name}</h1>
-                <h1>Unit : {userPackage.User.unit}</h1>
-                <h1>Deskripsi : {userPackage.description}</h1>
+        { packages &&
+          filterPackage().length === 0 ?(
+            <h1 className="text-h2 mt-5">No New Package</h1>
+            ):(
+            <div className="w-full heightCustom overflow-y-scroll">
+            {/* <!-- Loop Item 1 --> */}
+            {filterPackage().map((userPackage, index) => (
+              <div
+                key={index}
+                className="h-auto p-5 flex flex-row justify-between items-center mb-5 bg-gray-300"
+              >
+                <div>
+                  <h1>Name : {userPackage.User.name}</h1>
+                  <h1>Unit : {userPackage.User.unit}</h1>
+                  <h1>Description : {userPackage.description}</h1>
+                  <h1>Received by : {userPackage.receiver}</h1>
+                </div>
+                <div className="flex flex-col items-center">
+                  <h1>Incoming Date</h1>
+                  <h1>{getDateTime(userPackage.createdAt)}</h1>
+                </div>
               </div>
-              <div className="flex flex-col items-center">
-                <h1>Incoming Date</h1>
-                <h1>{getDateTime(userPackage.createdAt)}</h1>
-              </div>
+            ))}
             </div>
-          ))}
-        </div>
-
-        )
-      }
-
-
-
+          )
+        }
       </div>
     </div>
   )

@@ -31,7 +31,7 @@ export default function Navbar() {
               activeClassName="nav-active"
               to="/history"
             >
-              History
+              Packages
             </NavLink>
           </div>
         </div>
