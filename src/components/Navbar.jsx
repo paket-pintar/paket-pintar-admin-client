@@ -21,7 +21,7 @@ export default function Navbar() {
               to="/"
               exact={true}
             >
-              Dashboard
+              Dashboard 
             </NavLink>
           </div>
 

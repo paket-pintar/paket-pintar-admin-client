@@ -4,7 +4,7 @@ body {
 }
 
 .bg-nav {
-  background-color: #E5E7EB;
+  background-image: linear-gradient(#eff8ff, #c9cbff);
 }
 
 .text-h1 {
@@ -41,7 +41,12 @@ body {
 }
 
 .nav-inactive {
+  color: #1F2937;
   font-size: x-large;
+}
+
+.navbar-icons {
+  width: 20px;
 }
 
 .text-p {

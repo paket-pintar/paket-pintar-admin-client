@@ -24,7 +24,11 @@ export default function CustomerPackages() {
   }
 
   function filterUser() {
-    return users.find((user) => user.id === +UserId)
+    if(users){
+      return users.find( user => user.id === +UserId)
+
+    }
+    return { name: 'customer', unit: 'unit'}
   }
 
   function filterPackage() {

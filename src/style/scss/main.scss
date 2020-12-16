@@ -4,7 +4,9 @@ $font-stack: 'Raleway', sans-serif;
 $color-primary: #f9e0ae;
 $color-secondary: #fc8621;
 
+// $color-bg-nav: #E5E7EB;
 $color-bg-nav: #E5E7EB;
+$color-bg-nav-gradient:linear-gradient(#eff8ff, #c9cbff);
 
 
 body{
@@ -12,7 +14,9 @@ body{
 }
 
 .bg-nav{
-  background-color: $color-bg-nav;
+  // background-color: $color-bg-nav;
+  background-image:  $color-bg-nav-gradient
+
 }
 
 .main-container{
@@ -51,7 +55,12 @@ body{
   box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 .nav-inactive{
+  color: #1F2937;
   font-size:x-large;
+}
+
+.navbar-icons{
+  width: 20px;
 }
 
 .text-p {
