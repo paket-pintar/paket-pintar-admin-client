@@ -1,15 +1,22 @@
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import {useHistory} from 'react-router-dom'
 import MainBarcodeScanner from '../components/MainBarcodeScanner'
+import { fetchUsers } from '../helpers/serverInteraction'
 
 
 export default function Scan() {
   const history = useHistory()
+  const dispatch = useDispatch()
   const { packages } = useSelector((state) => state.packages)
 
   function navigateTo(path) {
     history.push(path)
   }
+
+  useEffect(() => {
+    dispatch(fetchUsers())
+  }, [])
 
   return(
     <div className="w-4/5 main-content rounded-tl-lg bg-white">
