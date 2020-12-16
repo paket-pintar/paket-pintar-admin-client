@@ -7,6 +7,7 @@ export default function NewPackageDesc() {
   const [description, setDescription] = useState('')
   const [sender, setSender] = useState('')
   const [receiver, setReceiver] = useState('')
+  const [error, setError] = useState('')
   const history = useHistory()
   const { users } = useSelector((state) => state.user)
   const { userId } = useParams()
@@ -25,8 +26,9 @@ export default function NewPackageDesc() {
         console.log(data)
         history.push('/')
       })
-      .catch(err => {
-        console.log(err)
+      .catch(({response}) => {
+        console.log(response.data.msg)
+        setError(response.data.msg)
       })
   }
 
@@ -60,6 +62,7 @@ export default function NewPackageDesc() {
   
         <div className="flex flex-col w-2/3 mt-10">
           <form onSubmit={handleSubmit} className="w-full">
+            {error ? <p style={{color: 'red'}}>{error}</p> : ''}
             <label htmlFor="sender" className="text-h3">Sender</label>
             <input onChange={handleSender} value={sender} type="text" id="sender" className="w-full mt-5 mb-5 p-4 border"/>
             <label htmlFor="receiver" className="text-h3">Receiver</label>
