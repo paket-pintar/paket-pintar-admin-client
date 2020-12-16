@@ -83,6 +83,7 @@ export default function CustomerPackages() {
                   <p className="package-card-moment">
                     {getMomentDate(userPackage.createdAt)}
                   </p>
+
                 </div>
                 <p className="package-card-description">
                   {userPackage.description}
