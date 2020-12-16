@@ -20,10 +20,10 @@ export default function NewPackageDesc() {
       userId,
       receiver
     }
-    sendNotification(payload)
     createPackage(payload)
       .then(({ data }) => {
         console.log(data)
+        sendNotification(payload)
         history.push('/')
       })
       .catch(({response}) => {
