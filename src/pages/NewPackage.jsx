@@ -34,9 +34,9 @@ export default function NewPackage() {
 
   return (
     <div className="w-4/5 main-content">
-      <div className="flex flex-col justify-start align-start h-screen px-8 py-16">
+      <div className="flex flex-col justify-start align-start h-screen px-12 py-16">
         <div className="w-full flex flex-row">
-          <h1 className="text-header">Find Residents</h1>
+          <h1 className="text-header">Find Residents to Add Package</h1>
         </div>
 
         <div className="flex w-4/5 mt-2">
@@ -47,14 +47,43 @@ export default function NewPackage() {
               type="text"
               placeholder="Enter resident name"
             />
-            <button type="submit" className="ml-3 btn-1">
-              Search
-            </button>
           </form>
         </div>
-        <div className="flex flex-col mt-10 heightCustom items-center w-4/5">
+        <div className="flex flex-col mt-3 heightCustom items-center w-4/5">
           <div className="w-full h-auto overflow-y-scroll">
-            {
+            <table className="w-full border text-center">
+              <thead>
+                <tr className="bg-gray-700 text-white">
+                  <th className="py-4"> Resident's Name</th>
+                  <th>Unit</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {residentsFilter()?.map((user, index) => {
+                  return (
+                    <tr
+                      key={index}
+                      className={
+                        index % 2 === 0 ? "bg-gray-100 py-3" : "bg-white py-3"
+                      }
+                    >
+                      <td className="text-h3">{user.name}</td>
+                      <td>{user.unit}</td>
+                      <td>
+                        <button
+                          onClick={() => navigateTo(`/new/${user.id}`)}
+                          className="btn-plus"
+                        >
+                          + Add
+                        </button>
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+            {/* {
             residentsFilter().map((user, index) => (
               <div
                 key={index}
@@ -78,7 +107,7 @@ export default function NewPackage() {
                   </button>
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
