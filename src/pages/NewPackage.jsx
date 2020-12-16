@@ -54,8 +54,8 @@ export default function NewPackage() {
             <table className="w-full border text-center">
               <thead>
                 <tr className="bg-gray-700 text-white">
-                  <th className="py-4"> Resident's Name</th>
                   <th>Unit</th>
+                  <th className="py-4"> Resident's Name</th>
                   <th></th>
                 </tr>
               </thead>
@@ -65,17 +65,17 @@ export default function NewPackage() {
                     <tr
                       key={index}
                       className={
-                        index % 2 === 0 ? "bg-gray-100 py-3" : "bg-white py-3"
+                        index % 2 === 0 ? "bg-gray-100" : "bg-white"
                       }
                     >
-                      <td className="text-h3">{user.name}</td>
                       <td>{user.unit}</td>
+                      <td className="py-2">{user.name}</td>
                       <td>
                         <button
                           onClick={() => navigateTo(`/new/${user.id}`)}
                           className="btn-plus"
                         >
-                          + Add
+                          +
                         </button>
                       </td>
                     </tr>
