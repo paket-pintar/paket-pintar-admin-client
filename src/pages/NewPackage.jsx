@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { fetchUsers } from "../helpers/serverInteraction"
 
 export default function NewPackage() {
   const [filter, setFilter] = useState("")
@@ -31,11 +30,7 @@ export default function NewPackage() {
     history.push(path)
   }
 
-  useEffect(() => {
-    dispatch(fetchUsers())
-  }, [])
-
-  console.log(users, "<<< ini users di redux")
+  console.log(users, "<<< isi users di newPackage page")
 
   return (
     <div className="w-4/5 main-content">
@@ -58,41 +53,33 @@ export default function NewPackage() {
           </form>
         </div>
         <div className="flex flex-col mt-10 heightCustom items-center w-4/5">
-
           <div className="w-full h-auto overflow-y-scroll">
-          {
-          residentsFilter().map((user, index) => (
-            <div
-              key={index}
-              className="flex flex-row p-3 justify-between items-center w-full"
-            >
-              <div className="flex flex-row justify-between mx-10 items-center p-2 w-full">
-                <div>
-                  <h1 className="text-h2">{user.name}</h1>
-
+            {
+            residentsFilter().map((user, index) => (
+              <div
+                key={index}
+                className="flex flex-row p-3 justify-between items-center w-full"
+              >
+                <div className="flex flex-row justify-between mx-10 items-center p-2 w-full">
+                  <div>
+                    <h1 className="text-h2">{user.name}</h1>
+                  </div>
+                  <div className="ml-20">
+                    <h1 className="text-h2-alt">{user.unit}</h1>
+                  </div>
                 </div>
-                <div className="ml-20">
-                <h1 className="text-h2-alt">{user.unit}</h1>
 
+                <div className="">
+                  <button
+                    onClick={() => navigateTo(`/new/${user.id}`)}
+                    className="btn-large"
+                  >
+                    Tambah Paket
+                  </button>
                 </div>
               </div>
-
-              <div className="">
-                <button
-                  onClick={() => navigateTo(`/new/${user.id}`)}
-                  className="btn-large"
-                >
-                  Tambah Paket
-                </button>
-              </div>
-            </div>
-          ))}
-
-
-
+            ))}
           </div>
-
-
         </div>
       </div>
     </div>

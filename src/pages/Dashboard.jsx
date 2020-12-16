@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
-import { fetchPackages } from "../helpers/serverInteraction"
+import { fetchPackages, fetchUsers } from "../helpers/serverInteraction"
 import { getDateTime } from "../helpers/dateConvert"
 
 export default function Dashboard() {
@@ -10,6 +10,7 @@ export default function Dashboard() {
   const { packages } = useSelector((state) => state.packages)
   useEffect(() => {
     dispatch(fetchPackages())
+    dispatch(fetchUsers())
   }, [])
 
   const unclaimedPackages = () => {

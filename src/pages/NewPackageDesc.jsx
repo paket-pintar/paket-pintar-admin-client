@@ -1,6 +1,6 @@
 import { useHistory, useParams } from 'react-router-dom'
 import { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { createPackage, sendNotification } from '../helpers/serverInteraction'
 
 export default function NewPackageDesc() {
@@ -10,11 +10,6 @@ export default function NewPackageDesc() {
   const history = useHistory()
   const { users } = useSelector((state) => state.user)
   const { userId } = useParams()
-  const dispatch = useDispatch()
-
-  function navigateTo(path) {
-    history.push(path)
-  }
 
   function handleSubmit(e) {
     e.preventDefault()
