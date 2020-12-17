@@ -74,14 +74,14 @@ export default function NewPackageDesc() {
         </div>
   
         <div className="flex flex-col w-2/3 mt-10">
-          <form onSubmit={handleSubmit} className="w-full">
+          <form onSubmit={handleSubmit} className="w-full flex flex-col">
             <label htmlFor="sender" className="text-h3">Sender</label>
             <input onChange={handleSender} value={sender} type="text" id="sender" className="w-full mt-5 mb-5 p-4 border"/>
             <label htmlFor="receiver" className="text-h3">Receiver</label>
             <input onChange={handleReceiver} value={receiver} type="text" id="receiver" className="w-full mt-5 mb-5 p-4 border"/>
             <label className="text-h3">Deskripsi Paket</label>
             <textarea onChange={handleDescription} value={description} rows="3" className="w-full mt-5 p-4 border"></textarea>
-            <button type="submit" className="ml-3 btn-1 w-1/5 self-end">Submit</button>
+            <button type="submit" className="mt-4 btn-1 w-1/5 self-end btn-plus-2">Submit</button>
            </form>
         </div>
 
