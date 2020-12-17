@@ -12,8 +12,8 @@ export default function CustomerPackages() {
   const history = useHistory()
 
   useEffect(() => {
-    console.log(packages, "<< packages in customerPackages")
-    console.log(users, "<< users in customerPackages")
+    //console.log(packages, "<< packages in customerPackages")
+    //console.log(users, "<< users in customerPackages")
   }, [])
 
   function handleClaimPackage() {
