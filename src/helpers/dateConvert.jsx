@@ -26,15 +26,8 @@ export function getDate(value) {
 }
 
 export function getMomentDate(value) {
-  const dateObj = new Date(value)
-  const month = dateObj.getUTCMonth() + 1 //months from 1-12
-  const day = dateObj.getUTCDate()
-  const year = dateObj.getUTCFullYear()
-  const time = dateObj.toLocaleTimeString()
 
-  const newdate = `${year}${month}${day}`
-
-  const momentDate = moment(newdate, 'YYYYMMDD').fromNow()
+  const momentDate = moment(value).fromNow()
 
   return momentDate
 }
