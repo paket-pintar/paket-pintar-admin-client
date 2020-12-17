@@ -81,7 +81,7 @@ export default function NewPackageDesc() {
             <input onChange={handleSender} value={sender} type="text" id="sender" className="w-full mt-5 mb-5 p-4 border"/>
             <label htmlFor="receiver" className="text-h3">Receiver</label>
             <input onChange={handleReceiver} value={receiver} type="text" id="receiver" className="w-full mt-5 mb-5 p-4 border"/>
-            <label className="text-h3">Deskripsi Paket</label>
+            <label className="text-h3">Package Description</label>
             <textarea onChange={handleDescription} value={description} rows="3" className="w-full mt-5 p-4 border"></textarea>
             <button type="submit" className="mt-4 btn-1 w-1/5 self-end btn-plus-2">Submit</button>
            </form>
