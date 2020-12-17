@@ -11,7 +11,6 @@ class BarcodeScanner extends React.Component {
     this.bDestroyed = false;
     this.scanner = null;
     this.elRef = React.createRef();
-    //this.history = useHistory()
   }
   async componentDidMount(){
     try{

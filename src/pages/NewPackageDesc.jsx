@@ -7,6 +7,7 @@ export default function NewPackageDesc() {
   const [description, setDescription] = useState('')
   const [sender, setSender] = useState('')
   const [receiver, setReceiver] = useState('')
+  const [error, setError] = useState('')
   const history = useHistory()
   const { users } = useSelector((state) => state.user)
   const { userId } = useParams()
@@ -40,8 +41,8 @@ export default function NewPackageDesc() {
         sendNotification(message, userId)
         console.log('send notif create package success');
       })
-      .catch(err => {
-        console.log(err)
+      .catch(({response}) => {
+        setError(response.data.msg)
       })
   }
 
@@ -74,6 +75,7 @@ export default function NewPackageDesc() {
         </div>
   
         <div className="flex flex-col w-2/3 mt-10">
+          {error ? <p style={{color: 'red'}}>{error}</p> : ''}
           <form onSubmit={handleSubmit} className="w-full flex flex-col">
             <label htmlFor="sender" className="text-h3">Sender</label>
             <input onChange={handleSender} value={sender} type="text" id="sender" className="w-full mt-5 mb-5 p-4 border"/>
