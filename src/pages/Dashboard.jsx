@@ -36,7 +36,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col justify-start align-start h-screen px-12 py-40">
+    <div className="flex flex-col justify-start align-start h-screen px-12 py-20">
       
       <div>
         <h1 className="text-header">Hello, Admin!</h1>

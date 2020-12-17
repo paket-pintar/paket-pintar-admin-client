@@ -49,8 +49,7 @@ export default function NewPackage() {
             />
           </form>
         </div>
-        <div className="flex flex-col mt-3 heightCustom items-center w-4/5">
-          <div className="w-full h-auto overflow-y-scroll">
+        <div className="flex flex-col w-4/5 mt-4 h-screen overflow-y-scroll">
             <table className="w-full border text-center">
               <thead>
                 <tr className="bg-gray-700 text-white">
@@ -83,32 +82,7 @@ export default function NewPackage() {
                 })}
               </tbody>
             </table>
-            {/* {
-            residentsFilter().map((user, index) => (
-              <div
-                key={index}
-                className="flex flex-row p-3 justify-between items-center w-full"
-              >
-                <div className="flex flex-row justify-between mx-10 items-center p-2 w-full">
-                  <div>
-                    <h1 className="text-h2">{user.name}</h1>
-                  </div>
-                  <div className="ml-20">
-                    <h1 className="text-h2-alt">{user.unit}</h1>
-                  </div>
-                </div>
-
-                <div className="">
-                  <button
-                    onClick={() => navigateTo(`/new/${user.id}`)}
-                    className="btn-large"
-                  >
-                    Tambah Paket
-                  </button>
-                </div>
-              </div>
-            ))} */}
-          </div>
+   
         </div>
       </div>
     </div>
