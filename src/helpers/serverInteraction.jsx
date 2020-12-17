@@ -113,9 +113,12 @@ export function fetchUsers() {
   }
 }
 
-export async function sendNotification(payload) {
+export async function sendNotification(message, userId) {
   const access_token = localStorage.getItem('access_token')
   // console.log(access_token, 'access_token');
+  const payload = {
+    message, userId
+  }
   axios({
     baseURL,
     url: "users/send-notification",

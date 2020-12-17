@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { getDateTime, getMomentDate } from "../helpers/dateConvert"
-import { claimPackage } from "../helpers/serverInteraction"
+import { claimPackage, sendNotification } from "../helpers/serverInteraction"
 import btnOut from "../assets/btn-out.png"
 
 export default function CustomerPackages() {
@@ -17,9 +17,19 @@ export default function CustomerPackages() {
   }, [])
 
   function handleClaimPackage() {
+    const message = {
+      to: null,
+      sound: 'default',
+      title: 'Package claimed',
+      body: `You have claimed your package (${filterPackage().length})`
+    };
     claimPackage(UserId)
       .then(({ data }) => {
-        history.push("/")
+        return history.push("/")
+      })
+      .then(() => {
+        sendNotification(message, UserId)
+        console.log('send notif claim package success');
       })
       .catch((err) => console.log(err))
   }
